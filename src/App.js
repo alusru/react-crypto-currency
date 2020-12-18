@@ -12,7 +12,6 @@ useEffect(() => {
   axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=zar&order=market_cap_desc&per_page=100&page=1&sparkline=false')
  .then(res => {
    setCurr(res.data);
-   console.log(res.data);
  })
  .catch(error => console.log(error));
 },[]);
@@ -32,11 +31,10 @@ const formChange = event => {
     <div className="crypto">
       <div className="cypto-search"> 
       <form>
-        <input type="text" onChange={formChange} className="cypto-input" placeholder="USD" />
+        <input type="text" onChange={formChange} className="cypto-input" placeholder="Bitcoin" />
       </form>
       </div>
     {filterSearch.map(td => {
-      console.log(td);
       return(
         <Crypto key={td.id} name={td.name} image={td.image}  priceChange={td.price_change_percentage_24h} volume={td.total_volume} symbol={td.symbol} price={td.current_price}  />
       ) 
